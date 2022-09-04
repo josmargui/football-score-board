@@ -1,33 +1,47 @@
 export const Board = {
-    Teams: [
-        "Mexico",
-        "Canada",
-        "Spain",
-        "Brazil",
-        "Germany",
-        "France",
-        "Uruguay",
-        "Italy",
-        "Argentinian",
-        "Australia"
-    ],
     Matches: [
         {
-            hometeam:"Mexico",
-            awayteam:"Canada",
-            goalshometeam:"0",
-            goalsawayteam:"5"
+            homeTeam:"Mexico",
+            awayTeam:"Canada",
+            goalsHomeTeam:0,
+            goalsAwayTeam:5,
+            totalGoals:5,
+            date:"2022-07-30"
+
         },
         {
-            hometeam:"Spain",
-            awayteam:"Brazil",
-            goalshometeam:"10",
-            goalsawayteam:"2"
+            homeTeam:"Spain",
+            awayTeam:"Brazil",
+            goalsHomeTeam:10,
+            goalsAwayTeam:2,
+            totalGoals:12,
+            date:"2022-07-30"
+
         },
         {
-            hometeam:"Germany",
-            awayteam:"French",
+            homeTeam:"Germany",
+            awayTeam:"France",
+            goalsHomeTeam:2,
+            goalsAwayTeam:2,
+            totalGoals:4,
+            date:"2022-07-20"         
         },
+        {
+            homeTeam:"Uruguay",
+            awayTeam:"Italy",
+            goalsHomeTeam:6,
+            goalsAwayTeam:6,
+            totalGoals:12,
+            date:"2022-08-30"
+        },
+        {
+            homeTeam:"Argentina",
+            awayTeam:"Australia",
+            goalsHomeTeam:3,
+            goalsAwayTeam:1,
+            totalGoals:4,
+            date:"2022-07-27"
+        }
         
     ]
 
