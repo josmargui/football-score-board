@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import './match.scss';
+import React, { useEffect, useState } from "react";
+import "./match.scss";
 
-const Match = ({ match }) => {
-  const primerValor = () => {
-    match &&
-      match.map((match) => {
+const Match = ({ matches }) => {
+
+  let primerValor = () => {
+    matches &&
+      matches.map((match) => {
         return (
           <div>
             <p>
@@ -15,63 +16,49 @@ const Match = ({ match }) => {
         );
       });
   };
-  const [sortMatch, setSortMatch] = useState(primerValor);
+  const [sortedMatches, setSortedMatches] = useState(primerValor);
 
-  /* FUNCTION SORT MACHES */
-
-/*   const sortBoard = (event) => {
-    const sortMatches = match.sort((a, b) => {
-      if ((a.totalGoals === b.totalGoals) & (a.date > b.date)) {
-        return a.date;
+  const sortBoard = () => {
+    const sortMatches = matches.sort((a, b) => {
+      if (a.totalGoals < b.totalGoals) {
+        return 1;
       }
+      if (a.totalGoals > b.totalGoals) {
+        return -1;
+      }
+      if (a.date > b.date) {
+        return -1;
+      }
+      if (a.date > b.date) {
+        return 1;
+      }
+
       return b.totalGoals - a.totalGoals;
     });
-    setSortMatch(sortMatches);
-    console.log("juan");
-    console.log(sortMatches);
-  }; */
+    setSortedMatches(sortMatches);
+  };
 
-  const sortBoard = (event) => {
-        
-         const sortMatches = match.sort((a, b)=> {
-          if(a.totalGoals < b.totalGoals){
-            return 1
-          }  
-          if(a.totalGoals > b.totalGoals){
-            return -1
-          }
-          if(a.date > b.date){
-            return -1
-          }
-          if(a.date > b.date){
-            return 1
-          }
 
-          return b.totalGoals-a.totalGoals;
-        });
-        setSortMatch(sortMatches)
-        console.log("juan");
-        console.log(sortMatches);
-    }
+  useEffect(() => {
+    sortBoard()
+  }, [matches])
 
   return (
     <div className="board-matches">
       <h2>Matches</h2>
       <div className="container-matches">
-      {match &&
-        match.map((match) => {
-          return (
-            
+        {sortedMatches &&
+          sortedMatches.map((match) => {
+            return (
               <div className="container-matches__item">
                 <p>
-                  {match.homeTeam} - {match.awayTeam}: {match.goalsHomeTeam} - {match.goalsAwayTeam}
+                  {match.homeTeam} - {match.awayTeam}: {match.goalsHomeTeam} -{" "}
+                  {match.goalsAwayTeam}
                 </p>
               </div>
-            
-          );
-        })}
-      <button onClick={sortBoard}>Ordenar resultados</button>
-    </div>
+            );
+          })}
+      </div>
     </div>
   );
 };
